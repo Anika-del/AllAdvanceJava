@@ -1,0 +1,18 @@
+generating code---
+
+Create table in other databases where   username="jpa", password="jpa"
+create table="student101" parameters id, name
+
+and then 
+   path1
+   Student101.java
+   StudentTest.java
+   META-INF>presistenci.xml		  
+		  
+Now student101 run
+D:\JPA programs\StudentAuto>>path1
+   D:\JPA programs\StudentAuto>>javac -d . *.java
+   D:\JPA programs\StudentAuto>>java mypack.StudentTest
+   
+ 
+~~~~~~~~~~~~~~~~~~~~~~~~~ Successfully persisted.. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+		  http://java.sun.com/xml/ns/persistence/persistence"
+          version="2.0">
+    <!-- Other servlet and configuration elements go here -->
+
+<persistence-unit name="appsquadzjpa" transaction-type="RESOURCE_LOCAL">
+<class>mypack.Employees</class>
+<properties>
+
+<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+    <property name="Javax.persistence.jdbc.user" value="jpa" /> 
+    <property name="javax.persistence.jdbc.password " value="jpa"/>
+    <property name="Javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver"/>
+<property name="eclipselink.logging.level" value="FINE" />
+<!--<property name="eclipselink ddl-generation" value="traate-tables/> -->
+<!--<property name="eclipselink.ddl-generation" value="create or-extend-tabies">-->
+<!--<property name="eclipselink.ddl-generation" value="drop-and-create-4ables"/>-->
+</properties>
+
+</persistence-unit>
+</persistence>

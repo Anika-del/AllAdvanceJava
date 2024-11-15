@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function showInput() {
+            const userInput = document.getElementById("user_input").value;
+            document.getElementById("display").innerHTML = userInput;
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <label><b>Enter a Message</b></label>
+        <input type="text" id="user_input">
+        <input type="button" value="Submit" onclick="showInput()">
+    </form>
+    <p>Your input: <span id="display"></span></p>
+</body>
+</html>

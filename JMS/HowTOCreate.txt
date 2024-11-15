@@ -1,0 +1,73 @@
+ 
+
+Certainly! Let's walk through the steps to create a JMS server and a JMS module in WebLogic Server. These components are essential for setting up JMS (Java Messaging Service) resources such as queues and topics. 
+
+Create a Persistent Store: 
+
+Before creating a JMS server, ensure you have a persistent store. A persistent store is used for message persistence and can be shared between sender and receiver servers. 
+
+In the WebLogic Administration Console: 
+
+Navigate to Services > Persistent Stores. 
+
+Click New and select Create FileStore. 
+
+Provide a name (e.g., EndPointFS) and specify the directory location (e.g., /scratch/obdx/wls). 
+
+Click Finish [4]. 
+
+Create a JMS Server: 
+
+JMS servers act as management containers for JMS resources within JMS modules. 
+
+In the WebLogic Administration Console: 
+
+Navigate to Services > Messaging > JMS Servers. 
+
+Click New. 
+
+Provide a name (e.g., ExtXfaceReceiverServer). 
+
+Select the persistent store created earlier (e.g., EndPointFS). 
+
+Set the target to a WebLogic server cluster (e.g., obdx_server1 cluster). 
+
+Click Finish. 
+
+Verify that the JMS server appears in the list with a healthy status [4]. 
+
+Create a JMS Module: 
+
+JMS modules contain JMS resources like queues and topics. 
+
+In the WebLogic Administration Console: 
+
+Navigate to Services > Messaging > JMS Modules. 
+
+Click New. 
+
+Provide a name for the JMS module (e.g., ExtXfaceReceiverModule). 
+
+Set the target (e.g., Obdx_Cluster or any other available cluster). 
+
+Leave the other options empty and click Next. 
+
+Uncheck "Would you like to add resources to this JMS system module" and click Finish [4]. 
+
+That's it! You've successfully created a JMS server and a JMS module. Now you can proceed to define JMS queues and other resources within the module. If you need further assistance or have additional questions, feel free to ask! 😊 
+
+Source: Conversation with Copilot, 24/5/2024 
+
+JMS STEP 2 : HOW TO CREATE A SIMPLE JMS QUEUE IN WEBLOGIC SERVER - Oracle 
+
+How to Create Connection Factory||JMS Queue||JMS Adapter or JNDI in WebLogic 12c 
+
+Oracle WebLogic JMS Overview and Monitoring JMS Servers, Messages, Queues by using WLSDM 
+
+11.Weblogic JMS Configuration 
+
+Step 1. Create a JMS Server and Module - Informatica 
+
+JMS queue in weblogic server 12c - TechSupper 
+
+Creating Weblogic JMS Server (Modules and other resources) using WLST 

@@ -1,0 +1,34 @@
+<html>
+<head>
+<script type="text/javascript">
+function loadMLDoc()
+{
+
+var xmlhttp;
+var k=document.getElementById("id2").value;
+var urls="db.jsp?ver="+k;
+
+
+   xmlhttp=new XMLHttpRequest();
+   
+   
+   xmlhttp.onreadystatechange=function()
+     {
+	 if(xmlhttp.readyState==4)
+	 {
+	     //document.getElementById("err").style.color="red";
+		 document.getElementById("err").innerHTML=xmlhttp.responseText;
+		 
+	   }
+	}
+ xmlhttp.open("GET",urls,true);
+ xmlhttp.send();
+ 
+ </script>
+ </head>
+ <body>
+ Enter name:<input type="text" name="id2" id="id2" onkeyup="loadXMLDoc()">
+ <span id="err"></span>
+ </body>
+ </html>
+ 

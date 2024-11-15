@@ -1,0 +1,32 @@
+generating code---
+
+Create new db user=   username="jpa", password="jpa"
+create table="student" parameters id, firstname, lastname, email
+
+and then 
+   path1
+   Student.java
+   StudentTest.java
+   META-INF>presistenci.xml
+   
+   
+   table>oracle1.java
+       cmd>javac Oracle1.java
+	      >java Oracle1
+		  
+		  
+Now student run
+D:\JPA programs\StudentEntryCurd>>path1
+   D:\JPA programs\StudentEntryCurd>>javac -d . *.java
+   D:\JPA programs\StudentEntryCurd>>java mypack.StudentTest
+   
+ as it is RetriveTest.java
+          D:\JPA programs\StudentEntryCurd>java mypack.RetriveTest
+		  
+UpdateTest.java
+          D:\JPA programs\StudentEntryCurd>java mypack.UpdateTest
+		  2001	bala	khan	salman420@gmail.com
+RemoveTest.java
+          D:\JPA programs\StudentEntryCurd>java mypack.RemoveTest
+		  ------------lalu remove
+~~~~~~~~~~~~~~~~~~~~~~~~~successful~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

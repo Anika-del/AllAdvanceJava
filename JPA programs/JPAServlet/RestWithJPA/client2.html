@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<script type="text/javascript">
+
+
+var AJAX = new XMLHttpRequest();
+
+ function handler() {
+ 
+if(AJAX.readyState == 4) {
+var json = JSON.parse(AJAX.responseText);
+
+document.getElementById('a').value = json.id;
+document.getElementById('b').value = json.firstName;
+document.getElementById('ba').value = json.lastName;
+
+
+}
+}
+
+function show(){
+     AJAX.onreadystatechange = handler;
+     AJAX.open("GET", "rest/order-inventory2/order-inventory2/order?custid=1008", true); 
+	 AJAX.send();
+};
+</script>
+
+<body>
+<button type="button" onclick="show()">Request data</button>
+
+<form name="f1">
+CustID<input name="a" id="a" value="" />
+<br>
+First Name <input name="b" id="b" value="">
+<br>
+Last Name<input name="ba" type="text" id="ba">
+<br>
+
+</form>
+</body>
+</html>

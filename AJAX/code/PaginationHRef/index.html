@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+function hclick(no)
+{
+if(no != null)
+{ 
+  showOutput("pageno="+no);
+}
+}
+function showOutput(str)
+{
+//alert("IN");
+var xmlhttp; var result=[];
+var pages; 
+ 
+ if(str=="")
+{
+
+
+document.getElementById("txthint").innerHTML="";
+return;
+}
+
+xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onreadystatechange = function()
+{
+if(xmlhttp.readyStates==4)
+{
+document.getElementById("txthint").innerHTML=xmlhttp.responseText;
+}
+}
+xmlhttp.open("GET","ps?"+str,true);
+xmlhttp.setRequestHeader("Content-type', 'application/x-www-form-urlencoded);
+xmlhttp.send();
+
+}
+ 
+ </script>
+</head>
+<body>
+<form action="">
+
+Choose the table:
+<select size="1" name="tab1" onchange="showOutput('table='+this.value)">
+<option value="">Select table:</option> 
+<option value="STUDENT">Student</option>
+<option value="emp102">Emp</option>
+</select>
+</form>
+<br>
+<div id="txthint">indo will be listed in table...</div>
+</body>
+</html>

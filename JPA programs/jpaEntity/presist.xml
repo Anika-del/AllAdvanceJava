@@ -1,0 +1,23 @@
+cation/persistame
+Jaun.com/amina/petence versio
+<persistence-unit name="appsquadripa transaction-type-RESOURCE LOCALS <class>mypack.Person</class>
+<properties>
+<property 1 name="javax.persistence.jdbc.url" value="jdbc:oracle:thin Macalbest 1521 XE/
+<property name="javax.persistence.jdbc.user" value="pa" /> <property name="javax.persistence.jdbc.password" value="jpa" />
+13
+<property name="javax.persistence.jdbc.driver" values" oracle.jdbc.driver.OracleDriver"/> <property name="eclipselink.logging.level" value=" FINE" /> 
+property name="eclipselink.ddl-generation" value="create-tables" />
+
+16
+17
+<!-- <property name="eclipselink.ddl-generation" value="create-or-extend-tables" />-> <!-- <property name="eclipselink.ddi-generation" value="drop-and-create-tables" />->
+</properties>
+18
+19
+20
+21
+</persistence-unit>
+</persistence>
+000 Redmi Note 10T 5G | ANI_PATEL
+22
+23

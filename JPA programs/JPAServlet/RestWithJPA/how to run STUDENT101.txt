@@ -1,0 +1,24 @@
+generating code---
+
+Create table in other databases where   username="jpa", password="jpa"
+create table="Customer1" parameters id, fname, lname
+
+and then 
+   path1
+   Customer.java
+   StudentTest.java
+   META-INF>presistenci.xml	
+cmd>javac -d . Customer.java
+cmd>jar cf jpp.jar *.*
+cmd>autodeploy>copy jpp.jar c:/oracle   ~~~~~~~~~~~~~~~~~~~~~`
+		  
+Now run RestWithJson
+cmd>path1
+cmd>javac -d WEB-INF/classes *.java
+cmd>java mypack.
+   
+ 
+~~~~~~~~~~~~~~~~~~~~~~~~~ Successfully persisted.. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+http://localhost:7001/RestWithJPA/rest/order-inventory1/order    output- Method Not Allowed

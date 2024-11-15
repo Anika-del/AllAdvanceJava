@@ -1,0 +1,80 @@
+The life cycle of entity objects consists of states; New, Managed, Removed and Detached. 
+
+When an entity object is initially created its state is New. In this state, the object is not yet associated with EntityManager and has no representation
+in the database.
+Example:  In below example, the Employee instance is co is constructed as an ordinary Java stand state is New. Note that Employee instance not yet associated
+with an EntityManager.
+
+
+Employee employee = new Employee("lalu", "bihar", "lalurabari") 
+
+Managed
+The managed state is maintained by below three methods:
+ 1. EntityManager.persist(Entity object); 
+ 2. EntityManager.find(Long id);
+ 3. Update Operation
+
+
+
+1. EntityManager.persist() method
+ An entity object becomes Managed when it is persisted to the database via an EntityManager's per which must be invoked within an active transaction. 
+ On transaction commit, the owning EntityManager the new entity object to the database.
+ Example: The following code stores an instance of the Employee entity class in the database:
+ 
+ 
+  Employee employee = new Employeel lalu", "yadav", "pune")
+  em.getTransact.commit();
+  em.persist(employee);
+  em.getTransaction().commit();
+ 
+
+ The Employee instance is Constructed as an ordinary Java object and Its Initial state is new. An explicit call to 
+ persist associates the object with an owner EntityManager em and changes its state to Managed 
+ Note that the new entity object is stored in the database when the transaction is committeed.
+
+2. EntityManager.find() method
+ Entity objects retrieved from the database by an EntityManager are also in the Managed state .
+ Example: the following code fragment demonstrates retrieval of an Employee object whase primary key is 1:
+
+ Employee employee em.find(Employee.class, 1);
+
+3. Update Operation
+ If a managed entity object is modified within an active transaction the change is detected by owning
+ EntityManager and the update is propagated to the database on transaction commit. 
+ Once an entity object is retrieved from the database (no matter which way) it can simply te modified in
+memory from inside an active transaction:
+
+  Employee employee em.find(Employee.class, 1);
+  em.getTransaction().begin();
+  employee.setNickName("Ram");
+  em.getTransaction().commit();
+ 
+
+The entity object is physically updated in the databass when thetarnsaction is commited. If the transaction is
+rolled back and not committed the update is discarded.
+
+Remove ->
+A management entity object can also be  retrieved from the database and the markdef for deletion , using the EntityManager's remov method withinan active trancation . Ther entity 
+object changed its state fron managed to removed and is physically deleted from the database during commit.
+Example:
+In order to delete an object from the database it has to first be retrived (no matter which way) and then in an active transaction, it can be deleted using the remove method:
+
+
+   Employee employee = em.find(Employee.class, 1);
+
+    em.getTransaction().begin();
+    em.remove(employee); 
+    em.getTransaction().commit();
+
+ Note: The entity object is physically deleted from the database when the transaction com in the entity object are also deleted. If the fransaction is rolled back and 
+ not commited the object is not deleted.
+ 
+ 
+Detached ->
+The last state, Detached, represents entity objects that have been disconnected from the EntityManager. 
+for instance, all the managed objects of an EntityManager become detached when the EntityManager is closed.
+Working with detached objects, including merging them back to an EntityManager. 
+Example: The JPA 2 provides a detach() method to detach an entity object;
+
+
+ em.detach(employee);

@@ -1,0 +1,3 @@
+set path=C:\Oracle\Middleware\jdk160_29\bin;
+set classpath=C:\Oracle\Middleware\wlserver_12.1\server\lib\weblogic.jar;D:\RESTFulApiProgram\RestWithJPA\WEB-INF\lib\asm-3.1.jar;D:\RESTFulApiProgram\RestWithJPA\WEB-INF\lib\jersey-client-1.17.1.jar;D:\RESTFulApiProgram\RestWithJPA\WEB-INF\lib\jersey-core-1.17.1.jar;D:\RESTFulApiProgram\RestWithJPA\WEB-INF\lib\jersey-json-1.17.jar;D:\RESTFulApiProgram\RestWithJPA\WEB-INF\lib\jersey-server-1.17.1.jar;D:\RESTFulApiProgram\RestWithJPA\WEB-INF\lib\jersey-servlet-1.17.1.jar;D:\RESTFulApiProgram\RestWithJPA\WEB-INF\lib\jsr311-api-1.1.1.jar;D:\RESTFulApiProgram\RestWithJPA\WEB-INF\lib\webservices.jar;D:\RESTFulApiProgram\RestWithJPA\WEB-INF\lib\jpp.jar;
+

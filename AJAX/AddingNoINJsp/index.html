@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Ajax Multiply Example</title>
+<script language="Javascript">
+
+ function postRequest(strURL){
+var xmlHttp;
+
+xmlHttp = new XMLHttpRequest();
+
+xmlHttp.open('POST', strURL, true);
+xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencaded');
+xmlHttp.onreadystatechange = function(){
+
+ if(xmlHttp.readyState == 4){
+ updatepage(xmlHttp.responseText);
+}
+}
+
+xmlHttp.send(strURL);
+}
+function updatepage(str){
+document.getElementById('result').value = str;
+}
+function callMultiply(){
+var a = parseInt(document.f1.a.value); 
+var b= parseInt(document.f1.b.value);
+var url = "add.jsp?a=" + a + "&b=" +b+ "";
+postRequest(url);
+}
+
+</script>
+</head>
+<body>
+
+<h1 align="center"><font color="#000080">Ajax Example</a></h1>
+<form name="f1">
+<input name="a" id="a" value="">
+<input name="b" id="b" value="">
+<input name="result" type="text" id="result"> 
+<input type="button" value="Multiply" onClick="callMultiply()" name="shonmultiply">
+</form>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<!ELEMENT student (student+)>
+<!ELEMENT student (id,name,fee)>
+<!ATTLIST student course (J2ee | .Net | Sqt) #REQUIRED >
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT fee (#PCDATA)>

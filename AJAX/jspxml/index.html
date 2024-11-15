@@ -1,0 +1,45 @@
+<html>
+<head> 
+<script type="text/javascript">
+
+function loadXMLDoc()
+{
+var xmlhttp;
+var keys=document.myform.sele.value
+var urls="db.jsp?ok="+keys
+
+xmlhttp=new XMLHttpRequest();
+
+xmlhttp.onreadystatechange=function(){
+if(xmlhttp.readyState==4)
+{
+var some=xmlhttp.responseXML.documentElement;
+
+document.getElementById("a").innerHTML=some.getElementsByTagName("stdid")[0].childNodes[0].nodeValue;
+document.getElementById("b").innerHTML=some.getElementsByTagName("stdfirstname")[0].childNodes[0].nodeValue;
+document.getElementById("c").innerHTML=some.getElementsByTagName("stdage")[0].childNodes[0].nodeValue;
+}
+}
+xmlhttp.open("GET",urls,true);
+xmlhttp.send();
+}
+
+ </script>
+ </head>
+ <body>
+ 
+ <form name="myform">
+ <select name="sele" onchange="loadXMLDoc()">
+ <option>value</option>
+ <option value="45">45</option> 
+ <option value="46">46</option>
+ <option value="47">47</option>
+
+ </select>
+ </form>
+
+ id: <span id="a"></span><br>
+ First name: <span id="b"></span><br>
+ Age <span id="c"></span><br>
+</body>
+</html>

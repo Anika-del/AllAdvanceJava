@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Company>
+<Employee id="1001">
+<name>AAlu</name>
+<address>Lucknow</address>
+<degination>IT student</degination>
+</Employee>
+<Employee id="1002">
+<name>Sonam</name>
+<address>Maharajganj</address>
+<degination>HR</degination>
+</Employee>
+<Employee id="1003">
+<name>Kokila</name>
+<address>Modi Bhavan</address>
+<degination>sASUMAA</degination>
+</Employee>
+<Employee id="1004">
+<name>Gopi</name>
+<address>GKP</address>
+<degination>IT</degination>
+</Employee>
+<Employee id="1005">
+<name>Rashi</name>
+<address>Haapur</address>
+<degination>Testing</degination>
+</Employee>
+</Company>

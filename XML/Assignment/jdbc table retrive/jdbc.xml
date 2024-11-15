@@ -1,0 +1,11 @@
+<?xml version = "1.0" ?>
+<!DOCTYPE jdbc SYSTEM "jdbc.dtd">
+<jdbc>
+  <OracleData>
+      <driver>oracle.jdbc.driver.OracleDriver</driver>
+	  <url>jdbc:oracle:thin:@localhost:1521:xe</url>
+	  <username>system</username>
+	  <pass>mca6</pass>
+	  <tablename>emp101</tablename>
+  </OracleData>
+</jdbc>

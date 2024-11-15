@@ -1,0 +1,113 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.1.35-community MySQL Community Server (GPL)
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| college            |
+| employee1          |
+| mysql              |
+| test               |
++--------------------+
+5 rows in set (0.05 sec)
+
+mysql> create database hospital;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use hospital;
+Database changed
+mysql> create table patients;
+ERROR 1113 (42000): A table must have at least 1 column
+mysql> create table patients(
+    -> id INT AUTO_INCREMENT PRIMARY KEY,
+    -> name VARCHAR(255) NOT NULL,
+    -> age INT NOT NULL,
+    -> gender VARCHAR(10) NOT NULL
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table doctors(
+    -> id int auto_increment primary key,
+    -> name varchar(255) not null,
+    -> specialization varchar(255) not null
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table APPOINTMENT(
+    -> id INT AUTO_INCREMENT PRIMARY KEY,
+    -> patient_id INT NOT NULL,
+    -> doctor_id INT NOT NULL,
+    -> appointment_date DATE NOT NULL,
+    -> FOREIGN KEY (patient_id) REFERENCES patients(id),
+    -> FOREIGN KEY (doctors_id) REFRENCES doctors(id)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'REFRENCES doctors(id)
+)' at line 7
+mysql> create table APPOINTMENT(
+    ->     -> id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     -> patient_id INT NOT NULL,
+    ->     -> doctor_id INT NOT NULL,
+    ->     -> appointment_date DATE NOT NULL,
+    ->     -> FOREIGN KEY (patient_id) REFERENCES patients(id),
+    ->     -> FOREIGN KEY (doctors_id) REFERENCES doctors(id)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-> id INT AUTO_INCREMENT PRIMARY KEY,
+    -> patient_id INT NOT NULL,
+    -> doc' at line 2
+mysql> create table APPOINTMENT(
+    -> id INT AUTO_INCREMENT PRIMARY KEY,
+    -> patient_id INT NOT NULL,
+    -> doctor_id INT NOT NULL,
+    -> appointment_date DATE NOT NULL,
+    -> FOREIGN KEY (patient_id) REFERENCES patients(id),
+    -> FOREIGN KEY (doctors_id) REFERENCES doctors(id)
+    -> );
+ERROR 1072 (42000): Key column 'doctors_id' doesn't exist in table
+mysql> create table APPOINTMENT(
+    ->  id INT AUTO_INCREMENT PRIMARY KEY,
+    -> patient_id INT NOT NULL,
+    -> doctor_id INT NOT NULL,
+    -> appointment_date DATE NOT NULL,
+    -> FOREIGN KEY (patient_id) REFERENCES patients(id),
+    -> FOREIGN KEY (doctor_id) REFERENCES doctors(id)
+    -> );
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_hospital |
++--------------------+
+| appointment        |
+| doctors            |
+| patients           |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql>INSERT INTO DOCTORS(name, specialization) VALUES("Pankaj Jain", "Physican");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO DOCTORS(name, specialization) VALUES("Harshit Amod", "NeuroSurgeon");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO DOCTORS(name, specialization) VALUES("AAnand Goial", "Theriphy");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from doctors;
++----+--------------+----------------+
+| id | name         | specialization |
++----+--------------+----------------+
+|  1 | Pankaj Jain  | Physican       |
+|  2 | Harshit Amod | NeuroSurgeon   |
+|  3 | AAnand Goial | Theriphy       |
++----+--------------+----------------+
+3 rows in set (0.00 sec)
+
+mysql>
+
+

@@ -1,0 +1,8 @@
+CREATE OR REPLACE PROCEDURE resins88 (
+    id IN emphs.type.nam,
+    name IN mp45.nametype
+) AS
+BEGIN
+    INSERT INTO emp65
+    VALUES (id, name);
+END;

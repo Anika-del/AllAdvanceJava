@@ -1,0 +1,7 @@
+<!ELEMENT jdbc (OracleData+)>
+<!ELEMENT OracleData (driver,url,username,pass,tablename)>
+<!ELEMENT driver (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT username (#PCDATA)>
+<!ELEMENT pass (#PCDATA)>
+<!ELEMENT tablename (#PCDATA)>

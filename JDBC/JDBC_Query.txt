@@ -1,0 +1,406 @@
+SQL interview prep for QA DBAs.
+-------------------before------------------------------------
+SQL> connect
+Enter user-name: system
+Enter password:
+Connected.
+SQL>
+-----------------------------------do it---------------------
+
+Let's prepare sample data to practice SQL queries.
+
+Sample Table -> Worker
+
+WORKER_ID FIRST_NAME LAST_NAME SALARY JOINING_DATE DEPARTMENT
+
+001 Monika Arora 100000 2014-02-20 09:00:00 HR
+002 Niharika Verma 800000 2014-02-20 09:00:00 Admin
+003 Vishar Singhal 300000 2014-02-20 09:00:00 HR
+004 Amitab Singh 500000 2014-02-20 09:00:00 Admin
+005 Vivek Bhati 500000 2014-02-20 09:00:00 Admin
+006 Vipul Diwan 200000 2014-02-20 09:00:00 Account
+007 Satish Kumar 75000 2014-02-20 09:00:00 Account
+008 Geetika Chauhan 90000 2014-02-20 09:00:00 Admin
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Sample Table -> Bonus
+
+SQL> create table Bonus(WORKER_REF_ID INT, BONUS_DATE TIMESTAMP, BONUS_AMMOUNT NUMBER(20));
+
+Table created.
+SQL> INSERT INTO Bonus (WORKER_REF_ID, BONUS_DATE, BONUS_AMMOUNT)VALUES (12345, TO_TIMESTAMP('2020-04-03 10:41:11', 'YYYY-MM-DD HH24:MI:SS'),5000);
+1 row created.
+
+WORKER_REF_ID BONUS_DATE    BONUS_AMOUNT
+1             2016-02-20 00:00:00  5000
+2             2016-06-11 00:00:00  3000
+3             2016-02-20 00:00:00  4000
+1             2016-02-20 00:00:00  4500
+2             2016-06-11 00:00:00  3500
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Simple Table -> Title 
+
+WORKER_REF_ID WORKER_TITLE   AFFECTED_FROM
+1             Manager       2016-02-20 00:00:00 
+2             Executive     2016-06-11 00:00:00
+8             Executive     2016-06-11 00:00:00
+5             Manager       2016-06-11 00:00:00
+4             Asst. Manager 2016-06-11 00:00:00
+7             Executive     2016-06-11 00:00:00
+6             Lead          2016-06-11 00:00:00
+3             Lead          2016-06-11 00:00:00
+
+
+CREATE DATABASE codesquadz;
+SHOW DATABASES;
+USE codesquadz;
+
+CREATE TABLE Worker (
+    WORKER_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    FIRST_NAME CHAR(25),
+    SALARY INT(15),
+    JOINING DATE DATETIME,
+    LAST_NAME CHAR(25),
+    DEPARTMENT CHAR(25)
+);
+
+INSERT INTO Worker
+(WORKER_ID, FIRST_NAME, LAST_NAME, SALARY, JOINING DATE, DEPARTMENT) VALUES
+(001, 'Monika', 'Arora', 100000, '14-02-20 09.00.00', 'HR'),
+(002, 'Niharika', 'Verma', 80000, '14-06-11 09.00.00', 'Admin'),
+(003, 'Vishal', 'Singhal', 300000, '14-02-20 09.00.00', 'HR'),
+(004, 'Amitabh', 'Singh', 500000, '14-02-20 09.00.00', 'Admin'),
+(005, 'Vivek', 'Bhati', 500000, '14-06-11 09.00.00', 'Admin'),
+(006, 'Vipul', 'Diwan', 200000, '14-06-11 09.00.00', 'Account');
+(007, 'Satish', 'Kumar', 75000, '14-06-11 09.00.00', 'Account');
+(008, 'Geetika', 'Chauhan', 900000, '14-06-11 09.00.00', 'Admin');
+--------------------------------------------------------------------------------------------------------
+
+
+CREATE TABLE Bonus (
+    WORKER_REF_ID INT,
+    BONUS_AMOUNT INT(10),
+    BONUS_DATE DATETIME,
+    FOREIGN KEY (WORKER_REF_ID)
+    REFERENCES Worker(WORKER_ID)
+    ON DELETE CASCADE
+);
+
+INSERT INTO Bonus
+(WORKER_REF_ID, BONUS_AMOUNT, BONUS_DATE) VALUES
+(001, 5000, '2016-02-20'),
+(002, 3000, '2016-06-11'),
+(003, 4000, '2016-02-20');
+INSERT INTO Bonus
+(WORKER_REF_ID, BONUS_AMOUNT, BONUS_DATE) VALUES
+(001, 5000, '16-02-20'),
+(003, 4000, '16-02-20'),
+(001, 4500, '16-02-20'),
+(002, 3500, '16-06-11');
+
+CREATE TABLE Title (
+    WORKER_REF_ID INT,
+    WORKER_TITLE CHAR(25),
+    AFFECTED_FROM DATETIME,
+    FOREIGN KEY (WORKER_REF_ID)
+    REFERENCES Worker(WORKER_ID)
+    ON DELETE CASCADE
+);
+
+INSERT INTO Title
+(WORKER_REF_ID, WORKER_TITLE, AFFECTED_FROM) VALUES
+(001, 'Manager', '2016-02-20 00:00:00'),
+(002, 'Executive', '2016-06-11 00:00:00'),
+(008, 'Executive', '2016-06-11 00:00:00'),
+(005, 'Manager', '2016-06-11 00:00:00'),
+(004, 'Asst. Manager', '2016-06-11 00:00:00'),
+(007, 'Executive', '2016-06-11 00:00:00');
+(006, 'Lead', '2016-06-11 00:00:00'),
+(003, 'Lead', '2016-06-11 00:00:00');
+
+Q-1. Write an SQL query to fetch "FIRST\_NAME" from the Worker table using the alias name <WORKER\_NAME>.
+
+Ans-->The required query is:
+
+Select FIRST\_NAME AS WORKER\_NAME from Worker;
+-----------------------------------------------------------------------------------------------
+
+Q-2. Write an SQL query to fetch "FIRST\_NAME" from the Worker table in upper case.
+
+Ans-->The required query is:
+
+Select upper(FIRST\_NAME) from Worker;
+--------------------------------------------------------------------------------------------------------------------------------------
+Q-3. Write an SQL query to fetch unique values of DEPARTMENT from the Worker table. 
+Ans.
+    The required query is: 
+    Select distinct DEPARTMENT from Worker;
+---------------------------------------------------------------------
+
+Q-4. Write an SQL query to print the first three characters of FIRST NAME from the Worker table. 
+Ans. 
+    The required query is: 
+    Select substring(FIRST_NAME,1,3) from Worker;
+---------------------------------------------------------------------
+
+Q-5. Write an SQL query to find the position of the alphabet ('a') in the first name column 'Amitabh' from the Worker table.
+
+ Ans. 
+    The required query is: 
+        Select INSTR(FIRST_NAME, BINARY'a') from Worker where FIRST_NAME = 'Amitabh';
+--------------------
+
+Q-6. Write an SQL query to print the FIRST NAME from the Worker table after removing white spaces from the right side. 
+Ans. 
+   The required query is: 
+      Select RTRIM(FIRST_NAME) from Worker;
+---------------------------------------------------------------------------------
+
+Q-7. Write an SQL query to print the DEPARTMENT from the Worker table after removing white spaces from the left side. 
+Ans. 
+   The required query is: 
+      Select LTRIM(DEPARTMENT) from Worker;
+-----------------------------------------------------------------------------------
+
+Q-8. Write an SQL query that fetches the unique values of DEPARTMENT from the Worker table and prints its length. 
+Ans. 
+   The required query is: 
+      Select distinct length(DEPARTMENT) from Worker;
+--------------------------------------------------------------------------------------
+
+Q-9. Write an SQL query to print the FIRST_NAME from the Worker table after replacing 'a' with 'A'. 
+Ans.
+   The required query is: 
+      Select REPLACE(FIRST_NAME,'a','A') from Worker;
+----------------------------------------------------------------------------------------------
+
+Q-10. Write an SQL query to print the FIRST NAME and LAST_NAME from the Worker table into a single column COMPLETE_NAME. A space char should separate them. Ans. 
+   The required query is: 
+      Select CONCAT(FIRST_NAME,' ',LAST_NAME) AS 'COMPLETE_NAME' from Worker;
+------------------------------------------------------------------------------------
+
+Q-11. Write an SQL query to print all Worker details from the Worker table order by FIRST_NAME Ascending. 
+Ans. 
+  The required query is: Select * from Worker order by FIRST_NAME asc;
+---------------------------------------------------------------------------------------------
+
+Q-12. Write an SQL query to print all Worker details from the Worker table order by FIRST_NAME Ascending and DEPARTMENT Descending. 
+Ans. 
+   The required query is:
+      Select * from Worker order by FIRST NAME asc, DEPARTMENT desc;
+------------------------------------------------------------------------------------
+
+Q-13. Write an SQL query to print details for Workers with the first names "Vipul" and "Satish" from the Worker table. 
+Ans. The required query is: 
+Select * from Worker where FIRST_NAME in ("Vipul","Satish");
+----------------------------------------------------------------------------
+
+
+Q-14. Write an SQL query to print details of workers excluding first names "Vipul" and "Satish" from the Worker table. 
+Ans. The required query is: 
+Select * from Worker where FIRST_NAME not in ('Vipul','Satish');
+----------------------------------------------------------------------------------
+
+Q-15. Write an SQL query to print details of Workers with DEPARTMENT name as "Admin". 
+Ans. The required query is: 
+Select * from Worker where DEPARTMENT like 'Admin%';
+---------------------------------------------------------------------------------
+
+Q-16. Write an SQL query to print details of the Workers whose FIRST NAME contains 'a'. 
+Ans. The required query is: 
+Select * from Worker where FIRST_NAME like '%a%';
+----------------------------------------------------------------------------------------
+
+Q-17. Write an SQL query to print details of the Workers whose FIRST NAME ends with 'a'. 
+Ans. The required query is: 
+Select * from Worker where FIRST_NAME like '%a';
+----------------------------------------------------------------------------------------
+
+Q-18. Write an SQL query to print details of the Workers whose FIRST_NAME ends with 'h' and contains six alphabets. 
+Ans. The required query is: 
+////Select * from Worker where FIRST_NAME like '%h_{5}';
+Select * from Worker where FIRST_NAME like '_h%';
+
+-----------------------------------------------------------------------------------------
+Q-19. Write an SQL query to print details of the Workers whose SALARY lies between 100000 and 500000. 
+Ans. The required query is: 
+Select * from Worker where SALARY between 100000 and 500000;
+
+Q-20. Write an SQL query to print details of the Workers who joined in Feb'2014. 
+Ans. The required query is: 
+Select * from Worker where year(JOINING_DATE) = 2014 and month(JOINING_DATE) = 2;
+
+Q-21. Write an SQL query to fetch the count of employees working in the department 'Admin'. 
+Ans. The required query is: 
+
+SELECT COUNT(*) FROM worker WHERE DEPARTMENT = 'Admin';
+
+At this point, you have acquired a good understanding of the basics of SQL. Let's move on to some more intermediate-level SQL query questions. These questions will require us to use more advanced SQL syntax and concepts, such as GROUP BY, HAVING, and ORDER BY.
+-------------------------------------------------------------------------------
+
+Q-22. Write an SQL query to fetch worker names with salaries >= 50000 and <= 100000. 
+Ans. 
+ The required query is: 
+SELECT CONCAT(FIRST_NAME, ' ', LAST_NAME) As Worker_Name, Salary FROM worker WHERE WORKER_ID IN (SELECT WORKER_ID FROM worker WHERE Salary BETWEEN 50000 AND 100000);
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+Q-23. Write an SQL query to fetch the number of workers for each department in descending order. 
+Ans. The required query is: 
+
+Select DEPARTMENT, COUNT(*) as Number_of_Workers from worker group by DEPARTMENT order by Number_of_Workers desc;
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Q-24. Write an SQL query to fetch the average salary for each department. 
+Ans. The required query is:
+
+SELECT DISTINCT W.FIRST_NAME, T.WORKER_TITLE
+FROM Worker W
+INNER JOIN Title T
+ON W.WORKER_ID = T.WORKER_REF_ID
+WHERE T.WORKER_TITLE in ('Manager');
+------------------------------------------------------------------------------------------------
+
+
+
+Q-25. Write an SQL query to fetch duplicate records having matching data in some fields of a table.
+
+Ans. The required query is:
+    SELECT WORKER_TITLE, AFFECTED_FROM, COUNT(*)
+    FROM Title
+    GROUP BY WORKER_TITLE, AFFECTED_FROM
+    HAVING COUNT(*) > 1;
+
+Q-26. Write an SQL query to show only odd rows from a table.
+
+Ans.The required query is:
+ SELECT * FROM Worker WHERE MOD (WORKER_ID, 2) <> 0;
+
+-----------------------------------------------------------------------------
+Q-27. Write an SQL query to show only even rows from a table.
+Ans. The required query is:
+    SELECT * FROM Worker WHERE MOD (WORKER_ID, 2) = 0;
+------------------------------------------------------------------------------------
+
+
+Q-28. Write an SQL query to clone a new table from another table.
+Ans. 
+The general query to clone a table with data is :
+SELECT * INTO WorkerClone FROM Worker;
+
+The general query to clone a table with data is :
+SELECT * INTO WorkerClone FROM Worker WHERE 1 = 0;
+
+An alternate way to clone a table (for MySQL) without data is:
+CREATE TABLE WorkerClone LIKE Worker;
+
+
+-----------------------------------------------------------------------------------------
+
+Q-29. Write an SQL query to fetch intersecting records of two tables.
+ Ans.  The required query is:
+
+ (SELECT * FROM Worker)
+  INTERSECT
+  (SELECT * FROM WorkerClone);
+----------------------------------------------------------------------------------------
+
+Q-30. Write an SQL query to show records from one table that another table does not have.
+ Ans.
+The required query is:
+
+ SELECT * FROM Worker
+ MINUS
+ SELECT * FROM Title;
+--------------------------------------------------------------------------------------
+
+Q-31. Write an SQL query to show the current date and time.
+Ans.
+  The following MySQL query returns the current date:
+
+ SELECT CURDATE();
+ And the following MySQL query returns the current date and time:
+
+ SELECT NOW();
+ Here is a SQL Server query that returns the current date and time:
+
+ SELECT getdate();
+ Find this Oracle query that also returns the current date and time:
+
+ SELECT SYSDATE FROM DUAL;
+
+-------------------------------------------------------------------------------------
+Q-32. Write an SQL query to show the top n (say 10) records of a table. 
+
+Ans. MySQL query to return the top n records using the LIMIT method:
+     SELECT * FROM Worker ORDER BY Salary DESC LIMIT 10; 
+
+SQL Server query to return the top n records using the TOP command: 
+    SELECT TOP 10 FROM Worker ORDER BY Salary DESC;
+
+Oracle query to return the top n records with the help of ROWNUM:
+    SELECT * FROM (SELECT * FROM Worker ORDER BY Salary DESC) 
+  WHERE ROWNUM <= 10; 
+
+Now, you should have a solid foundation in intermediate SQL, let's take a look at some 
+more advanced SQL query questions. These questions will require us to use more complex
+ SQL syntax and concepts, such as nested queries, joins, unions, and intersects.
+--------------------------------------------------------------------------------------------
+
+Q-33. Write an SQL query to determine the nth (say n=5) highest salary from a table.
+ Ans. 
+MySQL query to find the nth highest salary:
+   
+SELECT Salary FROM Worker ORDER BY Salary DESC LIMIT n-1,1;
+SQL Server query to find the nth highest salary: 
+
+  SELECT TOP 1 Salary 
+  FROM ( 
+  SELECT DISTINCT TOP n Salary 
+  FROM Worker 
+  ORDER BY Salary DESC 
+  ) 
+  ORDER BY Salary ASC;
+-------------------------------------------------------------------------------------
+
+Q-34. Write an SQL query to determine the 5th highest 
+salary without using the TOP or limit method.
+ Ans.   The following query is using the correlated subquery to return the 5th highest salary: 
+
+  SELECT Salary 
+  FROM Worker W1 
+  WHERE 4 = ( 
+  SELECT COUNT( DISTINCT (W2.Salary)) 
+  FROM Worker W2 
+  WHERE W2.Salary >= W1.Salary
+  );
+
+Use the following generic method to find the nth highest salary without using TOP or limit:
+ 
+  SELECT Salary
+  FROM Worker W1
+  WHERE n-1 = (
+  SELECT COUNT( DISTINCT (W2.Salary))
+  FROM Worker W2
+  WHERE W2.Salary >= W1.Salary
+  );
+--------------------------------------------------------------------------------------------------
+
+ Q-35. Write an SQL query to fetch the list of employees with the same salary.
+  Ans.
+
+///////////////392
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+   

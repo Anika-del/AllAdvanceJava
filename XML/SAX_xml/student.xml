@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<student>
+	<student course="j2ee">
+	<id>101</id>
+	<name>Lalu</name>
+	<fee>100</fee>
+</student>
+<student course=".Net">
+	<id>102</id>
+	<name>Laaluu</name>
+	<fee>5000</fee>
+	</student>
+</student>
+
